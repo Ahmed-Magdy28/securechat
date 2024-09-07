@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "827489900120",
+    "project_id": "chat-d09ee",
+    "storage_bucket": "chat-d09ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827489900120:android:849cc42ad5fbbe779c5c2d",
+        "android_client_info": {
+          "package_name": "com.example.securechat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1PJi5-wZUiaz83RNpTflqYFjpp-WfSPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

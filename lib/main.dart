@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:securechat/Screens/main_screen.dart';
+import 'package:securechat/Screens/splash_screen.dart';
 import 'package:securechat/firebase_options.dart';
 
 Future<void> main() async {
@@ -20,7 +20,8 @@ class _SecureChatAppState extends State<SecureChatApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const MainScreen(),
+      theme: ThemeData(fontFamily: 'Poppins'),
+      home: const SplashScreen(),
     );
   }
 }

@@ -1,6 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:securechat/Screens/dashboard_screen.dart';
-import 'package:securechat/Screens/login_screen.dart';
+import 'package:securechat/classes/routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,24 +10,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  // @override
-  // void initState() {
-  //   Future.delayed(const Duration(seconds: 2), () {
-  //     openLogin();
-  //   });
+  var user = FirebaseAuth.instance.currentUser;
 
-  //   // TODO: implement initState
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    Future.delayed(const Duration(minutes: 1), () {
+      Routes.chooseRoute(context: context, user: user);
+    });
 
-  void openDashboard() {
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => const DashBoardScreen()));
-  }
-
-  void openLogin() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -59,7 +51,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   backgroundColor: WidgetStatePropertyAll(Colors.blue),
                   foregroundColor: WidgetStatePropertyAll(Colors.white),
                 ),
-                onPressed: openLogin,
+                onPressed: () {
+                  Routes.openLogin(context: context);
+                },
                 child: const Text("Get Started")),
           ],
         ),

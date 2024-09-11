@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(minutes: 1), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Routes.chooseRoute(context: context, user: user);
     });
 

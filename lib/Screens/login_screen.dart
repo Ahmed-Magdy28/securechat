@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:securechat/classes/routes.dart';
-import 'package:securechat/classes/shared_class.dart';
 import 'package:securechat/controllers/login_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -72,7 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Email is required';
-                        } else if (!value.contains('@')) {
+                        } else if (!value.contains('@') &&
+                            !value.contains('.com')) {
                           return 'Please enter true Email';
                         } else {
                           return null;

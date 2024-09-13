@@ -59,7 +59,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Email is required';
-                        } else if (!value.contains('@')) {
+                        } else if (!value.contains('@') &&
+                            !value.contains('.com')) {
                           return 'Please enter true Email';
                         } else {
                           return null;

@@ -42,7 +42,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(
               width: double.infinity,
               child: (userProvider.userImage != '')
-                  ? Image.network(userProvider.userImage)
+                  ? CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.transparent,
+                      child: Image.network(userProvider.userImage),
+                    )
                   : CircleAvatar(
                       radius: 60, child: Text(userProvider.userName[0])),
             ),

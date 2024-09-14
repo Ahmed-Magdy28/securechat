@@ -27,7 +27,9 @@ class _MyDrawerState extends State<MyDrawer> {
                 child: ListTile(
                   splashColor: Colors.yellow[200],
                   title: Text(userProvider.userName),
+                  subtitle: Text(userProvider.userEmail),
                   leading: CircleAvatar(
+                    backgroundColor: Colors.transparent,
                     child: (userProvider.userImage != '')
                         ? Image.network(userProvider.userImage)
                         : Text(userProvider.userName[0]),

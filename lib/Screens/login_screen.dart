@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:securechat/classes/routes.dart';
@@ -18,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  var user = FirebaseAuth.instance.currentUser;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -142,21 +145,31 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: const ButtonStyle(
                           backgroundColor: WidgetStatePropertyAll(Colors.blue)),
                       onPressed: () async {
-                        LoginController.logInFunc(
-                            context: context,
-                            email: emailController.text,
-                            password: passwordController.text,
-                            isChecked: isChecked,
-                            userForm: userForm);
+                        isLoading = true;
+                        setState(() {});
+                        await LoginController.logInFunc(
+                          context: context,
+                          email: emailController.text,
+                          password: passwordController.text,
+                          isChecked: isChecked,
+                          userForm: userForm,
+                        );
+                        isLoading = false;
+                        setState(() {});
                       },
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      child: (isLoading)
+                          ? const Expanded(
+                              child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ))
+                          : const Text(
+                              'Login',
+                              style: TextStyle(color: Colors.white),
+                            ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Row(
                       children: [
                         const Text("Don`t have an account?"),

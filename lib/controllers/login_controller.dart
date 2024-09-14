@@ -43,7 +43,7 @@ class LoginController {
         } else {
           await SharedClass.deleteData();
         }
-         Routes.openDashBoard(context: context);
+        Routes.openDashBoard(context: context);
       }
     }
   }

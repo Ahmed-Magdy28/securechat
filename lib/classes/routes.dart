@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:securechat/Screens/Profile/profile_edit.dart';
 import 'package:securechat/Screens/calls_screen.dart';
+import 'package:securechat/Screens/chat_room_screen.dart';
 import 'package:securechat/Screens/dashboard_screen.dart';
 import 'package:securechat/Screens/groups_screen.dart';
 import 'package:securechat/Screens/login_screen.dart';
@@ -25,6 +26,7 @@ class Routes {
   }
 
   static void openDashBoard({required BuildContext context}) {
+    Provider.of<UserProvider>(context, listen: false).getUserData();
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const DashBoardScreen()),
@@ -99,10 +101,23 @@ class Routes {
   }
 
   static void toEditProfile({required BuildContext context}) {
-    Navigator.pushReplacement(
+    Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const EditProfileScreen(),
+      ),
+    );
+  }
+
+  static void toChatRoomScreen(
+      {required BuildContext context, required String chatRoomName, required String chatRoomId}) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ChatRoomScreen(
+          chatRoomName: chatRoomName,
+          chatRoomId: chatRoomId,
+        ),
       ),
     );
   }

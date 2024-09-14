@@ -22,7 +22,8 @@ class SignupController {
         "name": name,
         "country": country,
         "email": email,
-        "id": userId.toString()
+        "id": userId.toString(),
+        "profileImage": ""
       };
       try {
         await db.collection("users").doc(userId.toString()).set(data);

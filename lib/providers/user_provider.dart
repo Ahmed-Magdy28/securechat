@@ -12,10 +12,11 @@ class UserProvider extends ChangeNotifier {
   Map<String, dynamic>? userData = {};
 
   var db = FirebaseFirestore.instance;
-  var user = FirebaseAuth.instance.currentUser;
+
   var logger = Logger();
 
   void getUserData() async {
+    var user = FirebaseAuth.instance.currentUser;
     try {
       if (user != null) {
         await db.collection("users").doc(user!.uid).get().then((dataSnapShot) {
